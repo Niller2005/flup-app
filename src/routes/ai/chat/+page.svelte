@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/button/button.svelte';
-	import Input from '$lib/components/ui/input/input.svelte';
 	import { useChat } from 'ai/svelte';
+	import Input from '$lib/components/ui/input/input.svelte';
 	const { messages, handleSubmit, input, error } = useChat({ api: '/api/ai/chat' });
 </script>
 
