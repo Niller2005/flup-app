@@ -1,7 +1,5 @@
-import { db } from '.';
-import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle';
 import { sql } from 'drizzle-orm';
-import { int, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const users = sqliteTable('user', {
 	id: text('id').notNull().primaryKey(),

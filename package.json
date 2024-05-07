@@ -9,7 +9,10 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"studio": "drizzle-kit studio --config drizzle.config.ts",
+		"generate": "drizzle-kit generate:sqlite --config drizzle.config.ts",
+		"migrate": "drizzle-kit push:sqlite --config drizzle.config.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -20,7 +23,8 @@
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^7.0.0",
 		"autoprefixer": "^10.4.16",
-		"drizzle-kit": "^0.20.17",
+		"dotenv": "^16.4.5",
+		"drizzle-kit": "^0.20.18",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
@@ -51,7 +55,6 @@
 		"drizzle-orm": "^0.30.9",
 		"marked": "^12.0.1",
 		"mode-watcher": "^0.3.0",
-		"oslo": "^1.2.0",
 		"replicate": "^0.29.1",
 		"tailwind-merge": "^2.2.2",
 		"tailwind-variants": "^0.2.1"

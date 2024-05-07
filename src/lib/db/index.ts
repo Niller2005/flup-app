@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import * as auth from './auth';
+import * as auth from './schema';
 import { createClient } from '@libsql/client';
 import { drizzle } from 'drizzle-orm/libsql';
 

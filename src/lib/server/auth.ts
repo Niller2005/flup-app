@@ -1,7 +1,7 @@
 import { dev } from '$app/environment';
 import { env } from '$env/dynamic/private';
 import { db } from '$lib/db';
-import { sessions, users } from '$lib/db/auth';
+import { sessions, users } from '$lib/db/schema';
 import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle';
 import { Twitch } from 'arctic';
 import { Lucia } from 'lucia';

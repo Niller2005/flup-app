@@ -1,3 +1,7 @@
+<script>
+	import { enhance } from '$app/forms';
+</script>
+
 <section class="flex h-full items-center justify-center">
 	<div class="flex items-end">
 		<img
@@ -7,4 +11,8 @@
 		/>
 		<h1 class="text-2xl">Alo</h1>
 	</div>
+
+	<form method="post" use:enhance>
+		<button>Sign out</button>
+	</form>
 </section>
