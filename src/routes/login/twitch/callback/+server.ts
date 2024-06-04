@@ -3,17 +3,18 @@ import { db } from '$lib/db';
 import { users } from '$lib/db/schema';
 import { lucia, twitch } from '$lib/server/auth';
 import { createId } from '@paralleldrive/cuid2';
-import { redirect, type RequestHandler } from '@sveltejs/kit';
+import { type RequestHandler } from '@sveltejs/kit';
 import { OAuth2RequestError } from 'arctic';
-import { eq } from 'drizzle-orm';
 
 export const GET: RequestHandler = async ({ url, request, cookies }) => {
 	const state = url.searchParams.get('state');
 	const code = url.searchParams.get('code');
 	const storedState = cookies.get('twitch_oauth_state') ?? null;
 
-	if (!state || !storedState || !code || storedState !== state) {
-		return new Response(null, { status: 400 });
+	if (!code || !state || !storedState || state !== storedState) {
+		return new Response(null, {
+			status: 400
+		});
 	}
 
 	try {
@@ -61,7 +62,7 @@ export const GET: RequestHandler = async ({ url, request, cookies }) => {
 		return new Response(null, {
 			status: 302,
 			headers: {
-				location: '/'
+				Location: '/'
 			}
 		});
 	} catch (e) {

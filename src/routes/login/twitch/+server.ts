@@ -1,11 +1,13 @@
 import { dev } from '$app/environment';
 import { twitch } from '$lib/server/auth';
-import { redirect, type RequestHandler } from '@sveltejs/kit';
+import { type RequestHandler, redirect } from '@sveltejs/kit';
 import { generateState } from 'arctic';
 
 export const GET: RequestHandler = async ({ cookies }) => {
 	const state = generateState();
-	const url = await twitch.createAuthorizationURL(state);
+	const url = await twitch.createAuthorizationURL(state, {
+		scopes: ['user:read:email']
+	});
 
 	cookies.set(`twitch_oauth_state`, state, {
 		path: '/',

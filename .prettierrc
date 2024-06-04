@@ -3,6 +3,11 @@
 	"singleQuote": true,
 	"trailingComma": "none",
 	"printWidth": 100,
+	"semi": true,
+	"importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true,
+
 	"plugins": [
 		"prettier-plugin-svelte",
 		"@trivago/prettier-plugin-sort-imports",
