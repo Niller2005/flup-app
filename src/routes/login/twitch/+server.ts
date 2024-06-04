@@ -3,7 +3,7 @@ import { twitch } from '$lib/server/auth';
 import { redirect, type RequestHandler } from '@sveltejs/kit';
 import { generateState } from 'arctic';
 
-export const GET: RequestHandler = async ({ cookies, params }) => {
+export const GET: RequestHandler = async ({ cookies }) => {
 	const state = generateState();
 	const url = await twitch.createAuthorizationURL(state);
 

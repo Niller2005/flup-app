@@ -7,13 +7,12 @@ import { redirect, type RequestHandler } from '@sveltejs/kit';
 import { OAuth2RequestError } from 'arctic';
 import { eq } from 'drizzle-orm';
 
-export const GET: RequestHandler = async ({ cookies, url }) => {
+export const GET: RequestHandler = async ({ url, request, cookies }) => {
 	const state = url.searchParams.get('state');
 	const code = url.searchParams.get('code');
-
 	const storedState = cookies.get('twitch_oauth_state') ?? null;
 
-	if (!code || !state || !storedState || state !== storedState) {
+	if (!state || !storedState || !code || storedState !== state) {
 		return new Response(null, { status: 400 });
 	}
 
@@ -43,7 +42,6 @@ export const GET: RequestHandler = async ({ cookies, url }) => {
 			});
 		} else {
 			const userId = createId();
-
 			await db.insert(users).values({
 				id: userId,
 				twitchId: +twitchUserResult.id,
@@ -63,7 +61,7 @@ export const GET: RequestHandler = async ({ cookies, url }) => {
 		return new Response(null, {
 			status: 302,
 			headers: {
-				Location: '/'
+				location: '/'
 			}
 		});
 	} catch (e) {
